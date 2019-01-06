@@ -4,7 +4,8 @@
       xmlns:cc="http://java.sun.com/jsf/composite"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
     <!-- INTERFACE -->
     <cc:interface>
@@ -16,15 +17,20 @@
     <cc:implementation>
 
         <h:outputStylesheet library="css" name="pharmacypos.css" ></h:outputStylesheet>
-        <div class="posbill">
+        <div class="posbill" style="padding-left: 1%; padding-right: 1%; margin: auto;">
 
             <div class="institutionName" style="text-align: center!important;
                  font-weight: bold!important;
-                 font-size: 15px!important;
-                 font-weight: bold;">
-                <h:outputLabel value="#{cc.attrs.bill.department.printingName}" />
+                 font-size: 18px!important;
+                 font-weight: bold;
+                 ">
+
+                <p:outputLabel value="LAKMA " style="font-family: 'Lucida Calligraphy';" ></p:outputLabel>
+                <p:outputLabel value=" PHARMACY" style="font-family: 'Arial';" ></p:outputLabel>
+
+<!--<h:outputLabel value="#{cc.attrs.bill.department.printingName}" />-->
             </div>
-            <div class="institutionContact" >
+            <div class="institutionContact" style="font-family: 'Arial';">
                 <div>
                     <h:outputLabel value="#{cc.attrs.bill.department.address}"/>
                 </div>
@@ -36,18 +42,20 @@
                     <h:outputLabel value="#{cc.attrs.bill.department.fax}"/>                                                 
                 </div>
             </div>
-
-            <div class="headingBill">
-                <h:outputLabel value="Sale Bill"   />    
-                <h:outputLabel value="**Duplicate**"  rendered="#{cc.attrs.duplicate eq true}" /> 
-                <h:outputLabel value="**Cancelled**"  rendered="#{cc.attrs.bill.cancelled eq true}" /> 
+            <div class="billline">
+                <hr/>                          
+            </div>
+            <div class="headingBill"  style="font-family: 'Arial'; font-size: 13px!important;">
+                <h:outputLabel value=" Sale Bill "   />    
+                <h:outputLabel value=" **Duplicate**"  rendered="#{cc.attrs.duplicate eq true}" /> 
+                <h:outputLabel value=" **Cancelled**"  rendered="#{cc.attrs.bill.cancelled eq true}" /> 
             </div>
 
             <div class="billline">
-                <h:outputLabel value="-----------------------------------------------"   />                           
+                <hr/>                          
             </div>
 
-            <div class="billDetails" >
+            <div class="billDetails"   style="font-family: 'Arial'; font-size: 13px!important;">
                 <table style="width: 100%;" >
                     <tr>
                         <td style="width: 15%; text-align: left;" >
@@ -213,11 +221,11 @@
 
 
             <div class="billline">
-                <h:outputLabel value="-----------------------------------------------"   />                           
+                <hr/>                           
             </div>
 
 
-            <div >
+            <div   style="font-family: 'Arial'!important;; font-size: 13px!important;">
 
                 <table width="100%" style="width: 100%;" >
                     <tr>
@@ -239,7 +247,7 @@
 
                     <tr>
                         <td colspan="4" >
-                            <h:outputLabel value="-----------------------------------------------"   />                           
+                           <hr/>                           
                         </td>
                     </tr>
 
@@ -247,14 +255,8 @@
 
                         <tr>
                             <td colspan="4" style="overflow: visible;">
-                                <h:outputLabel value="#{bip.item.code}"  styleClass="itemsBlock" style="text-transform: capitalize;" >
-                                </h:outputLabel>
-                                -
-                                &nbsp;
                                 <h:outputLabel value="#{bip.searialNo+1} - #{bip.item.name}"  styleClass="itemsBlock" style="text-transform: capitalize!important;"  >
                                 </h:outputLabel>
-
-
                             </td>
                         </tr>
                         <tr>
@@ -294,12 +296,12 @@
 
 
             <div class="billline">
-                <h:outputLabel value="-----------------------------------------------"   />                           
+               <hr/>                           
             </div>
 
 
 
-            <div  >
+            <div   style="font-family: 'Arial'!important;; font-size: 14px!important;font-weight: bold;" >
 
                 <table style="width: 100%;">
 
@@ -334,27 +336,14 @@
                         </td>                        
                     </tr>
 
-                    <tr>
-
-                        <td  class="totalsBlock" style="text-align: left;">
-                            <h:outputLabel  rendered="#{cc.attrs.bill.discountPercentPharmacy ne 0.0}" value="Discount Percent" style="font-weight: bolder!important;"/>
-                        </td>
-
-                        <td  class="totalsBlock" style="text-align: right!important;font-weight: bold; ; padding-right: 30px; ">
-                            <h:outputLabel  rendered="#{cc.attrs.bill.discountPercentPharmacy ne 0.0}"    value="#{cc.attrs.bill.discountPercentPharmacy} %">
-                                <f:convertNumber pattern="#,##0.0" />
-                            </h:outputLabel>
-
-
-                        </td>
-                    </tr>
+                   
 
                     <tr>
                         <td  class="totalsItemBlock" style="text-align: left;">
-                            <h:outputLabel   value="Number of Items Count" />
+                            <h:outputLabel   value="Number of Items Count"   style="font-family: 'Arial'; font-size: 11px!important;"/>
                         </td>
                         <td  class="totalsItemBlock">
-                            <h:outputLabel   value="#{cc.attrs.bill.billItems.size()}">
+                            <h:outputLabel   value="#{cc.attrs.bill.billItems.size()}"   style="font-family: 'Arial'; font-size: 11px!important;">
                                 <f:convertNumber pattern="#,##0.00" />
                             </h:outputLabel>
                         </td>
@@ -369,10 +358,6 @@
             <div class="footer">
                 <br/>
                 THANK YOU !
-                <h:panelGroup  rendered="#{sessionController.institutionPreference.pharmacyBillFooter ne null}">
-                    <br/>
-                </h:panelGroup>
-                <h:outputLabel value="#{sessionController.institutionPreference.pharmacyBillFooter}" ></h:outputLabel>
             </div>
 
 
